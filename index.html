@@ -33,9 +33,6 @@
         <button class="btn-glow claim-btn" id="claim-btn" disabled>Claim Pod – 0.1 ETH</button>
         <div class="status-msg" id="status-msg"></div>
       </div>
-      <div class="audio-toggle" id="audio-toggle" title="Toggle Space Ambience">
-        <span id="audio-icon">🔊</span>
-      </div>
     </section>
   </main>
 
@@ -44,9 +41,13 @@
   </footer>
 
   <audio id="space-audio" loop preload="auto" style="display:none">
-    <source src="https://cdn.pixabay.com/audio/2022/11/16/audio_YCjWjeDpsRj9.mp3" type="audio/mp3">
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Cinematic_Background_Music/Scott_Holmes_Music_-_Floating_Cities.mp3" type="audio/mp3">
   </audio>
 
-  <script src="main.js"></script>
+  <div class="audio-toggle" id="audio-toggle" title="Toggle Space Ambience">
+    <span id="audio-icon">🔊</span>
+  </div>
+
+  <script src="main.js" type="module"></script>
 </body>
 </html>
