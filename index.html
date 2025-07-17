@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>MoonPod – To the Moon. Literally.</title>
+  <link rel="icon" href="https://moonpod.space/logo.png" />
+  <!-- Google Fonts: Orbitron and Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Ethers.js CDN -->
+  <script type="importmap">
+  {
+    "imports": {
+      "ethers": "https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.min.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Floating Moons/Astronauts/Stars Animation Canvas -->
+  <canvas id="bg-anim"></canvas>
+
+  <header class="branding">
+    <img src="/Moon Pod Logo 1.png" alt="MoonPod Logo" class="logo" />
+    <div class="tagline">To the Moon. Literally.</div>
+  </header>
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Reserve Your Pod</h1>
+      <div class="hero-sub">88 Genesis Pods. One Moon. Your legacy.</div>
+      <!-- Animated LIVE status -->
+      <div class="live-feed">
+        <span class="blinking-dot"></span> LIVE FEED: Payload Prepping…
+      </div>
+      <!-- Pod counter -->
+      <div class="pod-counter" id="pod-counter">🌕 23/88 Pods Claimed</div>
+      <!-- Presale UI -->
+      <div class="presale-controls">
+        <button class="btn-glow" id="connect-btn">Connect Wallet</button>
+        <div class="wallet-status" id="wallet-status" style="display:none">
+          Connected: <span id="wallet-address"></span>
+        </div>
+        <button class="btn-glow claim-btn" id="claim-btn" disabled>Claim Pod – 0.1 ETH</button>
+        <div class="status-msg" id="status-msg"></div>
+      </div>
+      <div class="audio-toggle" id="audio-toggle" title="Toggle Space Ambience">
+        <span id="audio-icon">🔊</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>MoonPod © 2025 – A Launch by Lunarnauts United</div>
+    <div class="footer-links">
+      <a href="#" class="footer-icon" aria-label="Twitter"><svg width="22" height="22" fill="currentColor"><circle cx="11" cy="11" r="10" stroke="white" fill="none" stroke-width="1"/><path d="M7 13c4 2 8-1 8-5v-.5A2.9 2.9 0 0 0 16 6a3 3 0 0 1-2 .6A1.5 1.5 0 0 0 15.5 5c-.4 0-.7.2-1 .2C13 4 12 6 11 6.5C8 4 6 7 7 10c-2 0-2-1-2-1s1 4 6 4.5C13 15 8 16 8 16" stroke="white" fill="none" stroke-width="1"></path></svg></a>
+      <a href="#" class="footer-icon" aria-label="Discord"><svg width="22" height="22" fill="currentColor"><circle cx="11" cy="11" r="10" stroke="white" fill="none" stroke-width="1"/><path d="M8 14c.2-.2.6-.3 1-.3s.8.1 1 .3m3-1.3c-.1-.2-.4-.3-.7-.3s-.7.1-.7.3m1.4 1.3c.2.2.6.3 1 .3s.8-.1 1-.3m-6.4-7c1-.3 2-.6 3-.6s2 .3 3 .6c.7 1 1.2 2 1.5 3l-.3 2.5c-2 .6-4 .7-6 0L5.9 10c.3-1 .8-2 1.5-3z" stroke="white" fill="none" stroke-width="1"></path></svg></a>
+    </div>
+  </footer>
+
+  <audio id="space-audio" loop preload="auto" style="display:none">
+    <source src="https://cdn.pixabay.com/audio/2022/11/16/audio_YCjWjeDpsRj9.mp3" type="audio/mp3">
+  </audio>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
