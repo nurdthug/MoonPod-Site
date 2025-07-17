@@ -7,7 +7,7 @@
   <link rel="icon" href="logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.min.js"></script>
 </head>
 <body>
   <canvas id="bg-anim"></canvas>
@@ -16,15 +16,14 @@
     <img src="logo.png" alt="MoonPod Logo" class="logo" />
     <div class="tagline">To the Moon. Literally.</div>
   </header>
-
+  
   <main>
     <section class="hero">
       <h1>Reserve Your Pod</h1>
       <div class="hero-sub">88 Genesis Pods. One Moon. Your legacy.</div>
-      <div class="live-feed">
-        <span class="blinking-dot"></span> LIVE FEED: Payload Prepping…
-      </div>
-      <div class="pod-counter" id="pod-counter">🌕 23/88 Pods Claimed</div>
+      <div class="live-feed"><span class="blinking-dot"></span> LIVE FEED: Payload Prepping…</div>
+      <div class="pod-counter" id="pod-counter">🌕 0/88 Pods Claimed</div>
+
       <div class="presale-controls">
         <button class="btn-glow" id="connect-btn">Connect Wallet</button>
         <div class="wallet-status" id="wallet-status" style="display:none">
@@ -32,6 +31,10 @@
         </div>
         <button class="btn-glow claim-btn" id="claim-btn" disabled>Claim Pod – 0.1 ETH</button>
         <div class="status-msg" id="status-msg"></div>
+      </div>
+
+      <div class="audio-toggle" id="audio-toggle" title="Toggle Space Ambience">
+        <span id="audio-icon">🔊</span>
       </div>
     </section>
   </main>
@@ -41,13 +44,9 @@
   </footer>
 
   <audio id="space-audio" loop preload="auto" style="display:none">
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Cinematic_Background_Music/Scott_Holmes_Music_-_Floating_Cities.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/audio/2022/11/16/audio_YCjWjeDpsRj9.mp3" type="audio/mp3">
   </audio>
 
-  <div class="audio-toggle" id="audio-toggle" title="Toggle Space Ambience">
-    <span id="audio-icon">🔊</span>
-  </div>
-
-  <script src="main.js" type="module"></script>
+  <script src="main.js"></script>
 </body>
 </html>
