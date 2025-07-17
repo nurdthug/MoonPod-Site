@@ -13,7 +13,7 @@ const audioIcon = document.getElementById('audio-icon');
 
 let signer;
 let userAddress = null;
-const PLACEHOLDER_RECEIVE_ADDRESS = "0x1111111111111111111111111111111111111111";
+const PLACEHOLDER_RECEIVE_ADDRESS = "0x9411dE226a239f05CeBfDf0b8A7A22e3101d4B09";
 
 // Connect Wallet
 async function connectWallet() {
