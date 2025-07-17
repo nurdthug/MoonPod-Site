@@ -7,13 +7,7 @@
   <link rel="icon" href="logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <script type="importmap">
-    {
-      "imports": {
-        "ethers": "https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.min.js"
-      }
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.umd.min.js"></script>
 </head>
 <body>
   <canvas id="bg-anim"></canvas>
@@ -22,7 +16,7 @@
     <img src="logo.png" alt="MoonPod Logo" class="logo" />
     <div class="tagline">To the Moon. Literally.</div>
   </header>
-  
+
   <main>
     <section class="hero">
       <h1>Reserve Your Pod</h1>
@@ -47,15 +41,12 @@
 
   <footer>
     <div>MoonPod © 2025 – A Launch by Lunarnauts United</div>
-    <div class="footer-links">
-      <!-- Icons omitted for brevity -->
-    </div>
   </footer>
 
   <audio id="space-audio" loop preload="auto" style="display:none">
     <source src="https://cdn.pixabay.com/audio/2022/11/16/audio_YCjWjeDpsRj9.mp3" type="audio/mp3">
   </audio>
 
-  <script type="module" src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
